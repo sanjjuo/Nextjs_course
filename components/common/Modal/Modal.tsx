@@ -20,7 +20,7 @@ const Modal = ({productDetails} : {productDetails: Product}) => {
                             <Image
                                 alt="image"
                                 src={imageModal}
-                                width={1000}
+                                width={1001}
                                 height={100}
                                 className="w-full h-52 rounded-lg"
                             />
