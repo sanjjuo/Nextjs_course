@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import createMiddleware from 'next-intl/middleware';
+import {routing} from './i18n/routing';
+
+export default createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === "/about")
@@ -7,7 +11,13 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/blog", "/profile", "/about"],
+   matcher: [
+    // Your custom routes
+    "/blog", 
+    "/profile", 
+    "/about",
+    '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+  ]
 };
 
 // request: = "contains info about where the user is trying to go"
