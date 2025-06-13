@@ -6,7 +6,7 @@ async function wait(ms: number) {
 }
 
 export default async function FootwearsPage() {
-  await wait(2000) // Simulate 2s delay
+  await wait(1000) // Simulate 2s delay
   return (
     <CategoryCard
       image='/footwear.jpg'

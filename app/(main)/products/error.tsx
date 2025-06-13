@@ -12,7 +12,7 @@ export default function ErrorBoundary({ error, reset }: { error: Error; reset: (
     }
     return (
         <div className='flex flex-col items-center justify-center h-[80vh]'>
-            <span className='text-lg'>wtf r u doing mahn there is an error..</span>
+            <span className='text-lg'>wtf are you doing mahn there is an error..</span>
             <span className='text-red-500'>{error.message}</span>
             <button onClick={reload} className='app-btn'>try again</button>
         </div>

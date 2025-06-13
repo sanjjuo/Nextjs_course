@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import PageHeader from '../common/PageHeader/PageHeader';
+import { motion } from 'motion/react'
 
 const Products = ({ products }: { products: Product[] }) => {
     return (
@@ -9,7 +10,12 @@ const Products = ({ products }: { products: Product[] }) => {
             <PageHeader header='our products' />
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 mt-5">
                 {products.slice(0, 20).map((product) => (
-                    <div key={product.id} className='w-full'>
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        transition={{ duration: 0.4}}
+                        viewport={{once: true}}
+                        key={product.id} className='w-full'>
                         <div className='relative overflow-hidden rounded-lg h-[300px]'>
                             <Link href={`/products/${product.id}`}>
                                 <Image src={product?.images[0]} alt='' width={1000} height={300} className='rounded-lg hover:scale-110 h-full duration-300' />
@@ -21,7 +27,7 @@ const Products = ({ products }: { products: Product[] }) => {
                                 <span>${product.price}</span>
                             </h6>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
