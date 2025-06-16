@@ -5,7 +5,7 @@ import React from "react";
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
-      <Navbar />
+      <Navbar type='other-navbar' />
       <div className="app-padding">{children}</div>
       <Footer />
     </div>

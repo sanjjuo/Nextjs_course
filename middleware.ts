@@ -1,23 +1,37 @@
 import { NextRequest, NextResponse } from "next/server";
-import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
+import createMiddleware from "next-intl/middleware";
+import { routing } from "./i18n/routing";
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname === "/about")
-    return NextResponse.rewrite(new URL("/profile", request.nextUrl));
-  return NextResponse.redirect(new URL("/", request.url));
+  // You can access the detected locale like this:
+  const locale = routing.locales.find((loc) =>
+    request.nextUrl.pathname.startsWith(`/${loc}`)
+  );
+
+  // Example: Custom logic (logging the locale)
+  if (locale) {
+    console.log("Detected locale:", locale);
+  }
+
+  // If the path is "/[locale]/about", rewrite to "/[locale]/profile"
+  if (locale && request.nextUrl.pathname === `/${locale}/about`) {
+    return NextResponse.rewrite(new URL(`/${locale}/profile`, request.url));
+  }
+
+  // Call the next-intl middleware to handle locale routing
+  return intlMiddleware(request);
 }
 
 export const config = {
-   matcher: [
+  matcher: [
     // Your custom routes
-    "/blog", 
-    "/profile", 
+    "/blog",
+    "/profile",
     "/about",
-    '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
-  ]
+    "/((?!api|trpc|_next|_vercel|.*\\..*).*)",
+  ],
 };
 
 // request: = "contains info about where the user is trying to go"

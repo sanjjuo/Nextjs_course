@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { motion } from "motion/react"
 import { useTranslations } from 'next-intl';
+import Navbar from '@/components/common/Navbar/navbar';
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,8 +19,9 @@ const Page = () => {
   };
 
   return (
-    <div className='flex items-center justify-center h-screen app-color'>
-      <div className='flex flex-col items-center justify-center'>
+    <div className='app-color'>
+      <Navbar type='welcome-navbar' />
+      <div className='flex flex-col items-center justify-center h-screen'>
         <h1 className="home-text font-bold capitalize">{t("title")}</h1>
         <p className="text-lg font-bold text-gray-600 mt-2">{t("about")}</p>
         <motion.button
