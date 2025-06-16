@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { Marcellus } from "next/font/google";
+import { Marcellus, Paytone_One } from "next/font/google";
 import "./[locale]/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
 const CustomFont = Marcellus({
   variable: "--font-custom",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const LogoFont = Paytone_One({
+  variable: "--font-logo",
   subsets: ["latin"],
   weight: "400",
 });
@@ -28,7 +34,9 @@ export default async function RootLayout({
   const { locale } = await params;
   return (
     <html lang={locale}>
-      <body className={`${CustomFont.className} antialiased`}>
+      <body
+        className={`${CustomFont.variable} ${LogoFont.variable} ${CustomFont.className} antialiased`}
+      >
         {/* <ErrorWrapper> */}
         <NextIntlClientProvider>
           <Toaster />

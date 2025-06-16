@@ -45,68 +45,66 @@ const Login = () => {
     toast.success("User logined successfully");
   };
   return (
-    <div className="flex items-center justify-center h-screen">
-      <Card className="w-[500px]">
-        <CardHeader>
-          <CardTitle>Login</CardTitle>
-          <CardDescription>Card Description</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form
-              action=""
-              onSubmit={handleSubmit(onSubmit)}
-              className="space-y-4"
+    <Card className="w-[500px]">
+      <CardHeader>
+        <CardTitle>Login</CardTitle>
+        <CardDescription>Card Description</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form
+            action=""
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-4"
+          >
+            <FormField
+              control={control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter username"
+                      {...field}
+                      className="shadow-none h-12 border-2 focus:!ring-0"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter password"
+                      {...field}
+                      className="shadow-none h-12 border-2 focus:!ring-0"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="bg-blue-500 w-full hover:bg-blue-500/70 h-10 mt-5 cursor-pointer"
             >
-              <FormField
-                control={control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter username"
-                        {...field}
-                        className="shadow-none h-12 border-2 focus:!ring-0"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
-                      <Input
-                        placeholder="Enter password"
-                        {...field}
-                        className="shadow-none h-12 border-2 focus:!ring-0"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button
-                type="submit"
-                className="bg-blue-500 w-full hover:bg-blue-500/70 h-10 mt-5 cursor-pointer"
-              >
-                Sign in
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-        <CardFooter className="text-sm space-x-1">
-          <p>Don't have an account? </p>
-          <Link href="/register" className="underline text-blue-500">
-            Sign up
-          </Link>
-        </CardFooter>
-      </Card>
-    </div>
+              Sign in
+            </Button>
+          </form>
+        </Form>
+      </CardContent>
+      <CardFooter className="text-sm space-x-1">
+        <p>Don't have an account? </p>
+        <Link href="/register" className="underline text-blue-500">
+          Sign up
+        </Link>
+      </CardFooter>
+    </Card>
   );
 };
 

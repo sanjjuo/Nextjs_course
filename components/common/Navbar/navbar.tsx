@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo/Logo";
 
 const headers = [
   { id: 0, name: "Our Products", link: "/products" },
@@ -20,9 +21,9 @@ const Navbar = ({ type }: { type: string }) => {
       {type === "other-navbar" ? (
         <div className="navbar-padding flex items-center justify-between p-5">
           <Link href="/">
-            <h1 className="text-2xl font-bold app-logo-text-color cursor-pointer">
-              Centrepoint Outlet
-            </h1>
+            <span className="cursor-pointer">
+              <Logo style="navbar" />
+            </span>
           </Link>
           <div>
             <ul className="flex items-center gap-5">

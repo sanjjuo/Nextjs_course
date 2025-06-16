@@ -42,6 +42,14 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
+
+.logo-title {
+  font-family: var(--font-logo);
+}
+
+.content-text {
+  font-family: var(--font-custom);
+}
 .app-logo-text-color {
   background: linear-gradient(90deg, #3f5efb 0%, #fc466b 100%);
   -webkit-background-clip: text;
@@ -77,8 +85,8 @@
   @apply py-20 max-w-[1400px] mx-auto;
 }
 
-.navbar-padding{
-   @apply  max-w-[1400px] mx-auto;
+.navbar-padding {
+  @apply max-w-[1400px] mx-auto;
 }
 
 .app-btn {
