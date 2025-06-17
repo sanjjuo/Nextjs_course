@@ -17,12 +17,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 
 const Login = () => {
+  const [loading, setLoading] = React.useState(false);
+  const router = useRouter();
   const loginSchema = z.object({
     username: z.string().min(1, { message: "Username is required" }),
     password: z
@@ -40,9 +45,15 @@ const Login = () => {
     },
   });
   const { control, handleSubmit } = form;
-  const onSubmit = (data: any) => {
-    console.log("user logined successfully", data);
-    toast.success("User logined successfully");
+
+  const loginFormSubmitFtn = (data: any) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      router.push("/products");
+      console.log("user logined successfully", data);
+      toast.success("User logined successfully");
+    }, 500);
   };
   return (
     <Card className="w-[500px]">
@@ -54,7 +65,7 @@ const Login = () => {
         <Form {...form}>
           <form
             action=""
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(loginFormSubmitFtn)}
             className="space-y-4"
           >
             <FormField
@@ -93,7 +104,13 @@ const Login = () => {
               type="submit"
               className="bg-blue-500 w-full hover:bg-blue-500/70 h-10 mt-5 cursor-pointer"
             >
-              Sign in
+              {loading ? (
+                <p className="flex items-center gap-1">
+                  <Loader className="animate-spin" /> Signing
+                </p>
+              ) : (
+                "Sign in"
+              )}
             </Button>
           </form>
         </Form>

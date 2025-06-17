@@ -17,12 +17,17 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod"; // Import zodResolver to connect Zod schema validation with React Hook Form
+import { Loader } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod"; // Import zod for schema-based form validation
 
 const Register = () => {
+  const [loading, setLoading] = React.useState(false);
+  const router = useRouter();
   // Created schema by using zod
   const registerSchema = z
     .object({
@@ -61,9 +66,14 @@ const Register = () => {
 
   const { control, handleSubmit } = form;
 
-  const onSubmit = (data: any) => {
-    console.log("form submitted", data);
-    toast.success("Form is submitted");
+  const registerFormSubmitFtn = (data: any) => {
+    setLoading(true);
+    setTimeout(() => {
+      router.push("/products");
+      toast.success("Form is submitted");
+      console.log("form submitted", data);
+      setLoading(false);
+    }, 500);
   };
 
   return (
@@ -76,7 +86,10 @@ const Register = () => {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <form
+            onSubmit={handleSubmit(registerFormSubmitFtn)}
+            className="space-y-4"
+          >
             <FormField
               control={control}
               name="email"
@@ -154,7 +167,13 @@ const Register = () => {
               variant="outline"
               className="border text-blue-500 hover:text-white border-blue-500 w-full hover:bg-blue-500 h-10 mt-5"
             >
-              Sign up
+              {loading ? (
+                <p className="flex items-center gap-1">
+                  <Loader className="animate-spin" /> Creating
+                </p>
+              ) : (
+                "Sign up"
+              )}
             </Button>
           </form>
         </Form>

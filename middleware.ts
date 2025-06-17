@@ -5,22 +5,14 @@ import { routing } from "./i18n/routing";
 const intlMiddleware = createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
-  // You can access the detected locale like this:
-  const locale = routing.locales.find((loc) =>
-    request.nextUrl.pathname.startsWith(`/${loc}`)
-  );
-
-  // Example: Custom logic (logging the locale)
-  if (locale) {
-    console.log("Detected locale:", locale);
+  const locales = routing.locales;
+  const defaultLocale = locales[0] || "en";
+  locales.find((loc) => {
+    request.nextUrl.pathname.startsWith(`/${loc}`);
+  });
+  if (request.nextUrl.pathname === "/") {
+    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
   }
-
-  // If the path is "/[locale]/about", rewrite to "/[locale]/profile"
-  if (locale && request.nextUrl.pathname === `/${locale}/about`) {
-    return NextResponse.rewrite(new URL(`/${locale}/profile`, request.url));
-  }
-
-  // Call the next-intl middleware to handle locale routing
   return intlMiddleware(request);
 }
 
@@ -38,8 +30,8 @@ export const config = {
 
 // NextResponse.redirect() = "Send user somewhere else"
 // new URL("/", request.url) = "Send them to home page (/)"
-// request.url = Gets the current website domain
-
+// request.url = Gets the current website domain like for example 'http://localhost:3000/
+//new URL creates new url
 // new URL("/", request.url) creates: "https://mywebsite.com/"
 
 // Rewrite /about to /profile (URL stays /about but shows /profile content)
