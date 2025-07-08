@@ -1,14 +1,8 @@
-import CategoryCard from '@/components/common/CategoryCard/CategoryCard'
-import React from 'react'
+import CategoryCard from "@/components/common/CategoryCard/CategoryCard";
+import React from "react";
 
 const Men = () => {
-  return (
-    <CategoryCard
-      image='/men.jpg'
-      title='men'
-      link='/view-all-men'
-    />
-  )
-}
+  return <CategoryCard image="/men.jpg" title="men" link="/view-all-men" />;
+};
 
-export default Men
+export default Men;

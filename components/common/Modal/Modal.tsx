@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 
 const Modal = ({ productDetails }: { productDetails: Product }) => {
   const [imageModal, setImageModal] = React.useState(productDetails.images[0]);

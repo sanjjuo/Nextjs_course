@@ -19,12 +19,11 @@ import { Input } from "@/components/ui/input";
 import { loginServices } from "@/Api_Services/authServices";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { Link, useRouter } from "@/i18n/navigation";
 
 const Login = () => {
   const [loading, setLoading] = React.useState(false);

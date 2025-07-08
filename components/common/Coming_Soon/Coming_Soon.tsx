@@ -1,7 +1,7 @@
 "use clinet";
 import Coming_Soon_Icon from "@/components/SVG/Coming_Soon_Icon";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React from "react";
 
 const Coming_Soon_Component = () => {

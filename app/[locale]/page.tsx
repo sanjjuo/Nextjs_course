@@ -1,11 +1,11 @@
 "use client";
 import { Loader } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 import Navbar from "@/components/common/Navbar/navbar";
 import Logo from "@/components/Logo/Logo";
+import { useRouter } from "@/i18n/navigation";
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);

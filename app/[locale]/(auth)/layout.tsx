@@ -1,6 +1,6 @@
 "use client";
+import { useRouter } from "@/i18n/navigation";
 import { ArrowBigLeft } from "lucide-react";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {

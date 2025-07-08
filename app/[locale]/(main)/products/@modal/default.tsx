@@ -1,4 +1,3 @@
-export default function ProductId(){
-  return null
+export default function ProductId() {
+  return null;
 }
-

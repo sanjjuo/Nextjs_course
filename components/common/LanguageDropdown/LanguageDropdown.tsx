@@ -8,9 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { usePathname, useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { useLocale } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const LanguageDropdown = () => {

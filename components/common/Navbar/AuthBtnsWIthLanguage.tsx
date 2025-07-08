@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import React from "react";
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 
 const AuthBtnsWIthLanguage = ({ style }: { style: string }) => {
   return (

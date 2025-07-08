@@ -1,13 +1,12 @@
 "use client";
 import Logo from "@/components/Logo/Logo";
 import { useIsUserAuth } from "@/hooks/useIsUserAuth";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import AuthBtnsWIthLanguage from "./AuthBtnsWIthLanguage";
 import ProfileDropDown from "./ProfileDropDown";
 import { routing } from "@/i18n/routing";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, usePathname } from "@/i18n/navigation";
 
 const locale = routing.locales[0];
 const headers = [

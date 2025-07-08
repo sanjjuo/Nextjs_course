@@ -4,8 +4,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from "@/i18n/navigation";
 import { User } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const ProfileDropDown = () => {

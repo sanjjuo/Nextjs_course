@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from 'motion/react'
+import { motion } from "motion/react";
 
 const CategoryGrid = ({
   footwears,
@@ -22,10 +22,18 @@ const CategoryGrid = ({
       </motion.div>
       <motion.div
         initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }} className="col-span-4 row-span-4">{footwears}</motion.div>
+        whileInView={{ scaleX: 1 }}
+        className="col-span-4 row-span-4"
+      >
+        {footwears}
+      </motion.div>
       <motion.div
         initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }} className="col-span-3 row-span-2">{women}</motion.div>
+        whileInView={{ scaleX: 1 }}
+        className="col-span-3 row-span-2"
+      >
+        {women}
+      </motion.div>
     </div>
   );
 };

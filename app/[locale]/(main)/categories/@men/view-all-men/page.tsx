@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ViewAllMen = () => {
-    return (
-        <div>
-            men broii
-        </div>
-    )
-}
+  return <div>men broii</div>;
+};
 
-export default ViewAllMen
+export default ViewAllMen;

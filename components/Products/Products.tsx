@@ -2,10 +2,10 @@
 
 import { useFetchProducts } from "@/Services/ProductServices";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import Loading from "../common/Loading/Loading";
 import { Button } from "../ui/button";
 import React from "react";
+import { Link } from "@/i18n/navigation";
 
 type Product = {
   id: number;

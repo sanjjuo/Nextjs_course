@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ViewAllFootwears = () => {
-  return (
-    <div>
-      shoes broii !!
-    </div>
-  )
-}
+  return <div>shoes broii !!</div>;
+};
 
-export default ViewAllFootwears
+export default ViewAllFootwears;
