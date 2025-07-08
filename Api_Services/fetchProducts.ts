@@ -10,3 +10,8 @@ export const fetchProductDetails = async (productId: string) => {
   const response = await axios.get(`${BASE_URL}/${productId}`);
   return response.data;
 };
+
+export const createProduct = async (addedData: AddProduct) => {
+  const response = await axios.post(`${BASE_URL}`, addedData);
+  return response.data;
+};

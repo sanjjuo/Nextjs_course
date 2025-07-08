@@ -24,7 +24,7 @@ const LanguageDropdown = () => {
     if (segments[1] === defaultLang) {
       segments[1] = locale;
       const newPath = segments.join("/");
-      router.push(newPath);
+      router.replace(newPath);
     } else {
       // Handle case where pathname doesn't start with locale
       router.push(`/${locale}${pathname}`);

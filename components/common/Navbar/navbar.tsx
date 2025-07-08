@@ -1,21 +1,26 @@
 "use client";
+import Logo from "@/components/Logo/Logo";
+import { useIsUserAuth } from "@/hooks/useIsUserAuth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
-import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
+import AuthBtnsWIthLanguage from "./AuthBtnsWIthLanguage";
+import ProfileDropDown from "./ProfileDropDown";
+import { routing } from "@/i18n/routing";
+import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Logo from "@/components/Logo/Logo";
 
+const locale = routing.locales[0];
 const headers = [
-  { id: 0, name: "Our Products", link: "/products" },
-  { id: 1, name: "Categories", link: "/categories" },
-  { id: 2, name: "About", link: "/about" },
-  { id: 3, name: "Blog", link: "/blog" },
-  { id: 4, name: "Profile", link: "/profile" },
+  { id: 0, name: "Our Products", link: `/${locale}/products` },
+  { id: 1, name: "Categories", link: `/${locale}/categories` },
+  { id: 2, name: "About", link: `/${locale}/about/coming-soon` },
+  { id: 3, name: "Blog", link: `/${locale}/blog/coming-soon` },
 ];
 
 const Navbar = ({ type }: { type: string }) => {
   const pathname = usePathname();
+  const isUserAuth = useIsUserAuth();
+
   return (
     <div className="navbar_footer_color sticky top-0 z-50">
       {type === "other-navbar" ? (
@@ -43,26 +48,22 @@ const Navbar = ({ type }: { type: string }) => {
               })}
             </ul>
           </div>
+          {isUserAuth ? (
+            <div className="flex items-center gap-10">
+              <Link href="/add_Product">
+                <Button className="bg-blue-500 rounded-full text-xs cursor-pointer hover:bg-blue-500/80">
+                  <Plus />
+                  Add Product
+                </Button>
+              </Link>
+              <ProfileDropDown />
+            </div>
+          ) : (
+            <AuthBtnsWIthLanguage style="other-page" />
+          )}
         </div>
       ) : (
-        <div className="flex items-center justify-end gap-5 app-color p-5">
-          <div className="space-x-2">
-            <Link href="/login">
-              <Button className="bg-blue-500 hover:bg-blue-500/70 font-bold tracking-wider cursor-pointer">
-                Sign in
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button
-                variant="outline"
-                className="border border-blue-500 hover:bg-blue-500 hover:text-white bg-transparent text-blue-500 font-bold tracking-wider cursor-pointer"
-              >
-                Sign up
-              </Button>
-            </Link>
-          </div>
-          <LanguageDropdown />
-        </div>
+        <AuthBtnsWIthLanguage style="welcome-page" />
       )}
     </div>
   );

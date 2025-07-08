@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { loginServices } from "@/Api_Services/authServices";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader } from "lucide-react";
 import Link from "next/link";
@@ -29,32 +30,47 @@ const Login = () => {
   const [loading, setLoading] = React.useState(false);
   const router = useRouter();
   const loginSchema = z.object({
-    username: z.string().min(1, { message: "Username is required" }),
+    email: z
+      .string()
+      .min(1, { message: "Email is Required" })
+      .email({ message: "Email id is invalid" }),
     password: z
       .string()
       .min(1, { message: "Password is required" })
-      .min(8, { message: "Password atleast 8 charcters" })
-      .max(16, { message: "password don't exceed 16 characters" }),
+      .min(8, { message: "Password must be at least 8 characters" })
+      .max(16, { message: "Password must not exceed 16 characters" }),
   });
 
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
   const { control, handleSubmit } = form;
 
-  const loginFormSubmitFtn = (data: any) => {
+  const loginFormSubmitFtn = async (data: LoginTypes) => {
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const response = await loginServices(data);
+      console.log("Login response:", response);
+
+      if (response.access_token) {
+        localStorage.setItem("user", JSON.stringify(response));
+        toast.success("User logged in successfully");
+        router.push("/products");
+      } else {
+        toast.error("Login failed: No token received");
+      }
+    } catch (error: any) {
       setLoading(false);
-      router.push("/products");
-      console.log("user logined successfully", data);
-      toast.success("User logined successfully");
-    }, 500);
+      const message = error?.response?.data?.message || "Login failed";
+      toast.error(message);
+      console.log("Login error:", error);
+    }
   };
+
   return (
     <Card className="w-[500px]">
       <CardHeader>
@@ -70,12 +86,13 @@ const Login = () => {
           >
             <FormField
               control={control}
-              name="username"
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="Enter username"
+                      type="email"
+                      placeholder="Enter email"
                       {...field}
                       className="shadow-none h-12 border-2 focus:!ring-0"
                     />

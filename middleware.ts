@@ -29,9 +29,13 @@ export const config = {
 // request: = "contains info about where the user is trying to go"
 
 // NextResponse.redirect() = "Send user somewhere else"
+
 // new URL("/", request.url) = "Send them to home page (/)"
+
 // request.url = Gets the current website domain like for example 'http://localhost:3000/
+
 //new URL creates new url
+
 // new URL("/", request.url) creates: "https://mywebsite.com/"
 
 // Rewrite /about to /profile (URL stays /about but shows /profile content)

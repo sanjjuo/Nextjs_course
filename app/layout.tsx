@@ -1,8 +1,9 @@
+import { Toaster } from "@/components/ui/sonner";
+import ReactQueryProvider from "@/ReactQueryProvider/ReactQueryProvider";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { Marcellus, Paytone_One } from "next/font/google";
 import "./[locale]/globals.css";
-import { Toaster } from "@/components/ui/sonner";
 
 const CustomFont = Marcellus({
   variable: "--font-custom",
@@ -39,8 +40,10 @@ export default async function RootLayout({
       >
         {/* <ErrorWrapper> */}
         <NextIntlClientProvider>
-          <Toaster />
-          {children}
+          <ReactQueryProvider>
+            <Toaster />
+            {children}
+          </ReactQueryProvider>
         </NextIntlClientProvider>
         {/* </ErrorWrapper> */}
       </body>

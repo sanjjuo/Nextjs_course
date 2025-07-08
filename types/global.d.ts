@@ -14,3 +14,14 @@ interface Product {
   category: Category;
   images: string[];
 }
+
+interface LoginTypes {
+  email: string;
+  password: string;
+}
+
+interface AddProduct {
+  title: string;
+  price: number | string;
+  description: string;
+}
