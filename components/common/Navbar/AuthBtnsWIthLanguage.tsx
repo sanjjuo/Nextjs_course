@@ -27,7 +27,7 @@ const AuthBtnsWIthLanguage = ({ style }: { style: string }) => {
           </Button>
         </Link> */}
       </div>
-      <LanguageDropdown />
+      {/* <LanguageDropdown /> */}
     </div>
   );
 };
