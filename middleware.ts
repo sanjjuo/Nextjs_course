@@ -6,12 +6,9 @@ const intlMiddleware = createMiddleware(routing);
 
 export function middleware(request: NextRequest) {
   const locales = routing.locales;
-  const defaultLocale = locales[0] || "en";
-  locales.find((loc) => {
-    request.nextUrl.pathname.startsWith(`/${loc}`);
-  });
+
   if (request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
+    return NextResponse.redirect(request.url);
   }
   return intlMiddleware(request);
 }

@@ -13,10 +13,10 @@ const ProductsLayout = ({
   modal: React.ReactNode;
 }) => {
   return (
-    <>
-      <div> {modal}</div>
+    <div>
+      <div>{modal}</div>
       <div>{children}</div>
-    </>
+    </div>
   );
 };
 

@@ -20,14 +20,16 @@ const Page = () => {
   };
 
   return (
-    <div className="app-color">
-      <Navbar type="welcome-navbar" />
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="flex rtl:flex-row-reverse items-end gap-5 home-text font-bold capitalize">
+    <div className="app-color px-5 lg:p-0">
+      <Navbar />
+      <div className="flex flex-col items-center justify-center h-[93vh]">
+        <h1 className="flex rtl:flex-row-reverse items-end gap-2 lg:gap-5 home-text font-bold capitalize">
           {t("title")}
           <Logo style="welcome_page" />
         </h1>
-        <p className="text-lg font-bold text-gray-600 mt-2">{t("about")}</p>
+        <p className="text-base text-center lg:text-start lg:text-lg font-bold text-gray-600 mt-2">
+          {t("about")}
+        </p>
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}

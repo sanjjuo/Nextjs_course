@@ -18,14 +18,14 @@ const AuthBtnsWIthLanguage = ({ style }: { style: string }) => {
             Sign in
           </Button>
         </Link>
-        <Link href="/register">
+        {/* <Link href="/register">
           <Button
             variant="outline"
             className="border border-blue-500 hover:bg-blue-500 hover:text-white bg-transparent text-blue-500 font-bold tracking-wider cursor-pointer"
           >
             Sign up
           </Button>
-        </Link>
+        </Link> */}
       </div>
       <LanguageDropdown />
     </div>

@@ -59,7 +59,7 @@
 }
 
 .home-text {
-  @apply text-8xl text-center font-bold capitalize;
+  @apply text-3xl lg:text-8xl text-center font-bold capitalize;
 }
 
 .heading-text {

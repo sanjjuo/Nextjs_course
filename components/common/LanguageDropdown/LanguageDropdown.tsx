@@ -20,15 +20,7 @@ const LanguageDropdown = () => {
   const pathname = usePathname();
 
   const handleLanguageChange = (locale: string) => {
-    const segments = pathname.split("/");
-    if (segments[1] === defaultLang) {
-      segments[1] = locale;
-      const newPath = segments.join("/");
-      router.replace(newPath);
-    } else {
-      // Handle case where pathname doesn't start with locale
-      router.push(`/${locale}${pathname}`);
-    }
+    router.replace(pathname, { locale });
   };
 
   const LanguageComponent = ({

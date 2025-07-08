@@ -7,13 +7,15 @@ const Logo = ({ style }: { style: string }) => {
       <span
         className={cn(
           "logo-title",
-          style === "navbar" ? "text-4xl" : "text-9xl"
+          style === "navbar" ? "text-3xl" : "text-3xl lg:text-9xl"
         )}
       >
         YallaBuy
       </span>
       <WebsiteLogo
-        className={cn(style === "navbar" ? "w-12 h-12" : "w-40 h-40")}
+        className={cn(
+          style === "navbar" ? "w-10 h-10" : "w-10 h-10 lg:w-40 lg:h-40"
+        )}
       />
     </div>
   );

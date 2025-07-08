@@ -24,6 +24,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Link, useRouter } from "@/i18n/navigation";
+import Logo from "@/components/Logo/Logo";
 
 const Login = () => {
   const [loading, setLoading] = React.useState(false);
@@ -73,8 +74,13 @@ const Login = () => {
   return (
     <Card className="w-[500px]">
       <CardHeader>
-        <CardTitle>Login</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <div className="flex items-center justify-center pb-10">
+          <Logo style="navbar" />
+        </div>
+        <CardTitle className="text-2xl">Login</CardTitle>
+        <CardDescription className="text-sm text-muted-foreground">
+          Enter your email and password to access your account.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
@@ -93,7 +99,7 @@ const Login = () => {
                       type="email"
                       placeholder="Enter email"
                       {...field}
-                      className="shadow-none h-12 border-2 focus:!ring-0"
+                      className="shadow-none h-12 border-2 focus:!ring-0 rounded-xl"
                     />
                   </FormControl>
                   <FormMessage />
@@ -109,7 +115,7 @@ const Login = () => {
                     <Input
                       placeholder="Enter password"
                       {...field}
-                      className="shadow-none h-12 border-2 focus:!ring-0"
+                      className="shadow-none h-12 border-2 focus:!ring-0 rounded-xl"
                     />
                   </FormControl>
                   <FormMessage />
@@ -118,7 +124,7 @@ const Login = () => {
             />
             <Button
               type="submit"
-              className="bg-blue-500 w-full hover:bg-blue-500/70 h-10 mt-5 cursor-pointer"
+              className="bg-blue-500 w-full hover:bg-blue-500/70 h-12 mt-10 cursor-pointer rounded-xl"
             >
               {loading ? (
                 <p className="flex items-center gap-1">
@@ -131,12 +137,12 @@ const Login = () => {
           </form>
         </Form>
       </CardContent>
-      <CardFooter className="text-sm space-x-1">
+      {/* <CardFooter className="text-sm space-x-1">
         <p>Don't have an account? </p>
         <Link href="/register" className="underline text-blue-500">
           Sign up
         </Link>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 };

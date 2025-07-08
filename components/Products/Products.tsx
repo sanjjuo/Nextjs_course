@@ -47,7 +47,7 @@ const Products = ({ type }: { type: string }) => {
   const productsToShow = getProductsToDisplay();
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 mt-5">
+    <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 mt-5">
       {productsToShow.map((product: Product) => (
         <motion.div
           key={product.id}
@@ -59,13 +59,19 @@ const Products = ({ type }: { type: string }) => {
         >
           <div className="relative overflow-hidden rounded-lg h-[300px]">
             <Link href={`/products/${product.id}`}>
-              <img
-                src={product.images?.[0] || "/no-image.png"}
-                alt={product.title}
-                width={1000}
-                height={300}
-                className="rounded-lg hover:scale-110 h-full w-full object-cover duration-300"
-              />
+              {product.images?.[0] ? (
+                <img
+                  src={product.images?.[0] || "/no-image.png"}
+                  alt={product.title}
+                  width={10}
+                  height={30}
+                  className="rounded-lg hover:scale-110 h-[300px] w-full object-cover duration-300"
+                />
+              ) : (
+                <div className="bg-gray-200 w-full h-full rounded-lg flex items-center justify-center">
+                  <span className="text-gray-500">No Image</span>
+                </div>
+              )}
             </Link>
           </div>
           <div className="mt-2">
@@ -79,7 +85,7 @@ const Products = ({ type }: { type: string }) => {
         </motion.div>
       ))}
 
-      <div className="col-span-5 flex items-center justify-center">
+      <div className="col-span-full flex items-center justify-center">
         {!showAll ? (
           <Button
             variant="outline"
