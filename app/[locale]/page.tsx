@@ -21,8 +21,8 @@ const Page = () => {
 
   return (
     <div className="app-color px-5 lg:p-0">
-      <Navbar />
-      <div className="flex flex-col items-center justify-center h-[93vh]">
+      {/* <Navbar /> */}
+      <div className="flex flex-col items-center justify-center h-[100vh]">
         <h1 className="flex rtl:flex-row-reverse items-end gap-2 lg:gap-5 home-text font-bold capitalize">
           {t("title")}
           <Logo style="welcome_page" />
