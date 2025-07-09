@@ -4,7 +4,7 @@ import Products from "@/components/Products/Products";
 const ProductList = async () => {
   await new Promise((resolve) => setTimeout(resolve, 500));
   return (
-    <div className="space-y-20">
+    <div className="space-y-10 lg:space-y-20">
       <div>
         <PageHeader header="Trending Products" />
         <Products type="trending-products" />

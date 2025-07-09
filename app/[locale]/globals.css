@@ -63,7 +63,7 @@
 }
 
 .heading-text {
-  @apply text-center font-bold capitalize text-4xl;
+  @apply text-center font-bold capitalize text-2xl lg:text-4xl;
 }
 .app-color {
   background: #eeaeca;
@@ -82,7 +82,7 @@
   );
 }
 .app-padding {
-  @apply py-20 max-w-[1400px] mx-auto;
+  @apply py-10 lg:py-20 max-w-[1400px] mx-auto;
 }
 
 .navbar-padding {

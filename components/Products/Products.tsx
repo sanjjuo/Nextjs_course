@@ -47,7 +47,7 @@ const Products = ({ type }: { type: string }) => {
   const productsToShow = getProductsToDisplay();
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-5 gap-5 mt-5">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-5">
       {productsToShow.map((product: Product) => (
         <motion.div
           key={product.id}
@@ -57,7 +57,7 @@ const Products = ({ type }: { type: string }) => {
           viewport={{ once: true }}
           className="w-full"
         >
-          <div className="relative overflow-hidden rounded-lg h-[300px]">
+          <div className="relative overflow-hidden rounded-lg h-[200px] lg:h-[300px]">
             <Link href={`/products/${product.id}`}>
               {product.images?.[0] ? (
                 <img
@@ -65,7 +65,7 @@ const Products = ({ type }: { type: string }) => {
                   alt={product.title}
                   width={10}
                   height={30}
-                  className="rounded-lg hover:scale-110 h-[300px] w-full object-cover duration-300"
+                  className="rounded-lg hover:scale-110 h-[200px] lg:h-[300px] w-full object-cover duration-300"
                 />
               ) : (
                 <div className="bg-gray-200 w-full h-full rounded-lg flex items-center justify-center">
@@ -75,8 +75,8 @@ const Products = ({ type }: { type: string }) => {
             </Link>
           </div>
           <div className="mt-2">
-            <h6 className="flex items-center justify-between">
-              <span className="overflow-hidden text-ellipsis whitespace-nowrap w-56">
+            <h6 className="flex flex-col lg:flex-row items-start lg:items-center justify-between">
+              <span className="overflow-hidden text-ellipsis whitespace-nowrap w-full lg:w-56 text-sm lg:text-base">
                 {product.title}
               </span>
               <span>${product.price}</span>
