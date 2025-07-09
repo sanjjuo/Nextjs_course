@@ -44,7 +44,7 @@ const Navbar = () => {
           })}
         </ul>
       </div>
-      <div>
+      <div className="flex items-center gap-2">
         {isUserAuth ? (
           <div className="hidden lg:flex items-center gap-10">
             <Link href="/add_Product">
@@ -58,10 +58,10 @@ const Navbar = () => {
         ) : (
           <AuthBtnsWIthLanguage style="other-page" />
         )}
-      </div>
-      <div className="lg:hidden flex items-center gap-5">
-        <ProfileDropDown />
-        <MobileSidebar />
+        <div className="lg:hidden flex items-center gap-5">
+          {isUserAuth && <ProfileDropDown />}
+          <MobileSidebar />
+        </div>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     router.back();
   };
   return (
-    <div className="app-color h-screen p-40">
+    <div className="app-color h-screen p-5 lg:p-40 space-y-10 lg:space-y-0">
       <div
         onClick={handleBack}
         className="flex items-center cursor-pointer hover:text-gray-800"
